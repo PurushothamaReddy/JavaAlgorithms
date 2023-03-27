@@ -12,6 +12,7 @@ public class MissingNumber {
         int totalSum=(n*(n+1))/2;
         System.out.println(totalSum-sum);
         duplicate(new int[]{1,2,3,2,4,5,6});
+        printMultipleMissingElements(new int[]{1,2,5,6},4);
     }
 
     public static void duplicate(int[] arr){
@@ -32,7 +33,7 @@ public class MissingNumber {
         // element in the array
         int[] b = new int[arr[N - 1] + 1];
 
-        // Make b[i]=1 if i is present
+        // Make b[i]=1 if it is present
         // in the array
         for(int i = 0; i < N; i++)
         {

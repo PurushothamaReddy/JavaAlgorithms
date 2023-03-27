@@ -54,6 +54,7 @@ public class StackUsingArray {
         sa.display();
         System.out.println(sa.pop());
         System.out.println(sa.peek());
+        sa.display();
 
     }
 

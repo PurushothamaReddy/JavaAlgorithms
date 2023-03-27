@@ -21,10 +21,28 @@ public class InsertionSort {
 
     }
 
+//https://www.softwaretestinghelp.com/insertion-sort-in-java/
+    //take the portion of the array and sort
+    public static void sortP(int[] arr) {
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j <  arr.length-1; j++) {
+                if (arr[j] > arr[j+1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+
+            }
+            System.out.println("In Sorting:" + Arrays.toString(arr));
+        }
+
+    }
+
     public static void main(String[] args) {
         int[] arr = {8, 9, 5, 1, 4, 7, 6};
         System.out.println("Before sorting:" + Arrays.toString(arr));
-        sort(arr);
+        sortP(arr);
         System.out.println("After Sorting:" + Arrays.toString(arr));
     }
 }

@@ -74,6 +74,7 @@ public class StackUsingLinkedList {
         stackUsingLinkedList.display();
         System.out.println("Pop:" + stackUsingLinkedList.pop());
         System.out.println("Peek:" + stackUsingLinkedList.peek());
+        stackUsingLinkedList.display();
 
 
     }

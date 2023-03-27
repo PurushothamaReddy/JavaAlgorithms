@@ -18,7 +18,9 @@ public class AnagramOfStrings {
 
     /** * This method check is given strings are rotation of each other * @param original * @param rotation * @return true or false */
     public static boolean checkRotation(String original, String rotation) {
-        if (original.length() != rotation.length()) { return false; }
+        if (original.length() != rotation.length()) {
+            return false;
+        }
         String concatenated = original + original;
         if (concatenated.indexOf(rotation) != -1)
         {

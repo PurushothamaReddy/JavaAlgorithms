@@ -35,7 +35,7 @@ public class LongestCommonSubString {
             return 0;
         }
         int m= str1.length();
-        int n=str2.length();
+        int n= str2.length();
         int[][] dp = new int[m][n];
         int max=0;
         for(int i=0;i<m;i++){

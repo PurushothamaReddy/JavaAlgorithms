@@ -47,6 +47,39 @@ public class DijkstraShortestPath {
         Collections.reverse(path);
         return path;
     }
+
+    public void computeShortestPathsP(Vertex sourceVertex){
+        sourceVertex.setDistance(0);
+        PriorityQueue<Vertex> queue= new PriorityQueue<>();
+        queue.add(sourceVertex);
+        sourceVertex.setVisited(true);
+        while(!queue.isEmpty()) {
+            Vertex actualVertex= queue.poll();
+
+            for(Edge edge: actualVertex.getAdjacenciesList()) {
+                Vertex v= edge.getTargetVertex();
+                double newDistance = actualVertex.getDistance()+ edge.getWeight();
+                if(newDistance < v.getDistance()) {
+                  v.setDistance(newDistance);
+                  v.setPredecessor(actualVertex);
+                  queue.add(v);
+                }
+
+            }
+            actualVertex.setVisited(true);
+
+        }
+
+    }
+    public List<Vertex> shortestPathTo(Vertex vertex) {
+        List<Vertex> paths = new ArrayList<>();
+        for(Vertex v= vertex; v!=null ; v=v.getPredecessor()) {
+            paths.add(v);
+        }
+        Collections.reverse(paths);
+        return paths;
+    }
+
     public static void main(String[] args) {
 
         Vertex vertexA = new Vertex("A");
@@ -64,7 +97,7 @@ public class DijkstraShortestPath {
         vertexD.addNeighbour(new Edge(6,vertexD,vertexE));
 
         DijkstraShortestPath shortestPath = new DijkstraShortestPath();
-        shortestPath.computeShortestPaths(vertexA);
+        shortestPath.computeShortestPathsP(vertexA);
 
         System.out.println("======================================");
         System.out.println("Calculating minimum distance");
@@ -79,10 +112,10 @@ public class DijkstraShortestPath {
         System.out.println("Calculating Paths");
         System.out.println("======================================");
 
-        System.out.println("Shortest Path from A to B: "+shortestPath.getShortestPathTo(vertexB));
-        System.out.println("Shortest Path from A to C: "+shortestPath.getShortestPathTo(vertexC));
-        System.out.println("Shortest Path from A to D: "+shortestPath.getShortestPathTo(vertexD));
-        System.out.println("Shortest Path from A to E: "+shortestPath.getShortestPathTo(vertexE));
+        System.out.println("Shortest Path from A to B: "+shortestPath.shortestPathTo(vertexB));
+        System.out.println("Shortest Path from A to C: "+shortestPath.shortestPathTo(vertexC));
+        System.out.println("Shortest Path from A to D: "+shortestPath.shortestPathTo(vertexD));
+        System.out.println("Shortest Path from A to E: "+shortestPath.shortestPathTo(vertexE));
 
     }
  

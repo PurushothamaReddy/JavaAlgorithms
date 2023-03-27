@@ -9,6 +9,7 @@ public class KthSmallestElement {
         int arr[]={10,5,20,8,3};
         int k=3;
         Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
         System.out.println(arr[k-1]);
 
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<Integer>();

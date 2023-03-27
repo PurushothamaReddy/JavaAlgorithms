@@ -19,7 +19,7 @@ public class TargetSumSubArray {
                 currSum += arr[end];
 
                 // print the starting and ending indices once we get
-                // subarray with given sum
+                // sub-array with given sum
                 if (currSum == target) {
                     System.out.println("starting index : " +
                             start + ", " + "Ending index : " + end);

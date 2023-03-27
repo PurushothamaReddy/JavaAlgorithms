@@ -46,6 +46,24 @@ public class Graph {
         }
     }}
 
+
+    public void bfsP(Node node) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+        node.visited =true;
+        while (!queue.isEmpty()) {
+            Node element = queue.poll();
+            System.out.print(element.data+" ");
+            for(Node adjacentNode : element.getAdjacentNodes()){
+                if(adjacentNode != null && !adjacentNode.visited) {
+                    queue.add(adjacentNode);
+                    adjacentNode.visited=true;
+                }
+            }
+        }
+
+    }
+
     public void dfsUsingStack(Node node) {
         Stack<Node> stack = new Stack<>();
         stack.add(node);

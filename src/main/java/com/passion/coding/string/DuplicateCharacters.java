@@ -10,7 +10,7 @@ public class DuplicateCharacters {
         // we can also do with str.indexOf(ch) != str.lastIndexOf(ch) then it is dup character
 
         HashMap<Character,Integer> countMap= new HashMap<>();
-        for(int i=0 ; i<str.length();i++){
+        for(int i=0 ; i<str.length();i++) {
             Character ch= str.charAt(i);
             if(countMap.containsKey(ch)) {
             countMap.put(ch,countMap.get(ch)+1);
@@ -19,9 +19,9 @@ public class DuplicateCharacters {
             }
 
         }
-        for(Map.Entry<Character,Integer> entry: countMap.entrySet()){
+        for(Map.Entry<Character,Integer> entry: countMap.entrySet()) {
             if(entry.getValue()>1)
-            System.out.println(entry.getKey());
+            System.out.println(entry.getKey()+" "+entry.getValue());
         }
     }
 }

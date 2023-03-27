@@ -315,7 +315,7 @@ public class BinaryTree {
         int lh,rh;
         lh=height(root.left);
         rh=height(root.right);
-        return Math.abs(lh-rh)<=1 && isBalanced(root.left)&& isBalanced(root.right);
+        return Math.abs(lh-rh)<=1 && isBalanced(root.left) && isBalanced(root.right);
     }
 //height or depth ofa binary tree
     public int height(TreeNode root){
