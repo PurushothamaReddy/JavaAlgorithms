@@ -1,5 +1,6 @@
 package com.passion.coding.vendingmachine;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -46,13 +47,60 @@ public class VendingMachineImpl implements VendingMachine {
     }
 
     @Override
-    public void insertCoins(Coin... coins) throws NotFullyPaidException {
-
-
+    public Bucket insertCoins(Coin... coins) throws NotFullyPaidException {
+        List<Integer> totalList = Arrays.asList(coins).stream().map(c -> c.getValue()).collect(Collectors.toList());
+        int totalValue = totalList.stream().reduce(Integer::sum).get();
+        if (totalValue < currentItem.getItemPrice()) {
+            throw new NotFullyPaidException();
+        } else {
+            return getItemAndDisplayChange(totalValue);
+        }
     }
 
     @Override
-    public Bucket getItemAndDisplayChange(int coinValue) {
+    public Bucket getItemAndDisplayChange(int insertedValue) {
+        this.addToCashInventory(insertedValue);
+        this.setCurrentBalance();
+//        int changedValue = this.getChanged(insertedValue, (int) this.currentItem.getItemPrice());
+//        this.substractChangedFromInventory(changedValue);
+//        this.currentBalance = this.currentBalance-changedValue;
+//        this.removedItemFromInventory();
+//        ArrayList<Coin> coins = new ArrayList<Coin>();
+//         //https://medium.com/@mkbhuktar/design-vending-machine-in-java-c566f4820844
+//
+//        return new Bucket(this.currentItem, this.convertToCoin(new ArrayList<Coin>(),changedValue));
+
         return null;
+    }
+
+    private int putCoinAndIncreament(Coin coin, int insertedValue) {
+        int remainder = insertedValue % coin.getValue();
+        int numOfCoins = this.cashInventory.getInventory().get(coin);
+        this.cashInventory.putInventory(coin, (numOfCoins + remainder));
+        return (insertedValue - (remainder * coin.getValue()));
+    }
+
+    private void addToCashInventory(int insertedCoinValue){
+        if(insertedCoinValue>=Coin.HUNDREDRUPEE.getValue()){
+            int test = this.putCoinAndIncreament(Coin.HUNDREDRUPEE, insertedCoinValue);
+            if(test!=0){
+                addToCashInventory(test);
+            }
+        }else if(insertedCoinValue>=Coin.FIVERUPEE.getValue()){
+            int test = this.putCoinAndIncreament(Coin.FIVERUPEE, insertedCoinValue);
+            if(test!=0){
+                addToCashInventory(test);
+            }
+        }else if(insertedCoinValue>=Coin.TENRUPEE.getValue()){
+            int test = this.putCoinAndIncreament(Coin.TENRUPEE, insertedCoinValue);
+            if(test!=0){
+                addToCashInventory(test);
+            }
+        }else if(insertedCoinValue>=Coin.ONERUPEE.getValue()){
+            int test = this.putCoinAndIncreament(Coin.ONERUPEE, insertedCoinValue);
+            if(test!=0){
+                addToCashInventory(test);
+            }
+        }
     }
 }
