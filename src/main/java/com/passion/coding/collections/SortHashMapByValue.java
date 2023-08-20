@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class SortHashMapByValue {
 
@@ -21,7 +22,11 @@ public class SortHashMapByValue {
 
 		System.out.println(scores);
 
-		scores = sortByValue(scores);
+//		scores = sortByValue(scores);
+//
+//		System.out.println(scores);
+		System.out.println(" -------------------");
+		scores = sortByValueP(scores);
 
 		System.out.println(scores);
 
@@ -49,4 +54,15 @@ public class SortHashMapByValue {
 		return sortedByValue;
 	}
 
+	private static Map<String,Integer> sortByValueP(Map<String, Integer> scores)  {
+		Map<String, Integer> sortByValue = new LinkedHashMap<>();
+
+		List<Entry<String,Integer>> entryList = new ArrayList<>(scores.entrySet());
+		entryList.sort((e1,e2)-> e1.getValue().compareTo(e2.getValue()));
+	//	sortByValue =entryList.stream().collect(Collectors.toMap(e-> e.getKey(),e->e.getValue()));
+		for (Entry<String, Integer> e : entryList) {
+			sortByValue.put(e.getKey(), e.getValue());
+		}
+		return sortByValue;
+	}
 }

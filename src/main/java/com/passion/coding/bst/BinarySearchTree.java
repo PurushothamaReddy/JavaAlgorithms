@@ -34,7 +34,7 @@ public class BinarySearchTree {
         if (root == null) {
             return false;
         }
-        if(root.data ==data){
+        if (root.data == data) {
             return true;
         }
         if (data < root.data) {
@@ -46,27 +46,38 @@ public class BinarySearchTree {
         return false;
     }
 
+    public BSTNode insertP(BSTNode root, int data) {
+        if (root == null) {
+            return new BSTNode(data);
+        }
+        if (data < root.data) {
+            root.left = insertP(root.left, data);
+        } else if (data > root.data) {
+            root.right = insertP(root.right, data);
+        } else {
+            System.out.println("Duplicates not allowed");
+        }
+        return root;
+    }
+
     // leftmost element in binary search tree is minimum
-    public static BSTNode minimumElement(BSTNode root)
-    {
-        if(root.left==null)
+    public static BSTNode minimumElement(BSTNode root) {
+        if (root.left == null)
             return root;
-        else
-        {
+        else {
             return minimumElement(root.left);
         }
     }
 
     // rightmost element in binary search tree is maximums
-    public static BSTNode maximumElement(BSTNode root)
-    {
-        if(root.right==null)
+    public static BSTNode maximumElement(BSTNode root) {
+        if (root.right == null)
             return root;
-        else
-        {
+        else {
             return maximumElement(root.right);
         }
     }
+
     public void inOrder(BSTNode root) {
         if (root != null) {
             inOrder(root.left);
@@ -75,35 +86,50 @@ public class BinarySearchTree {
         }
 
     }
+
     // if inorder is not sorted then it is not BST
     public boolean isBST(BSTNode root, BSTNode previous) {
 
         if (root == null) {
             return true;
         }
-           if(!isBST(root.left,previous)){
-               return false;
-           }
-           if(previous!= null && root.data < previous.data){
-               return false;
-           }
-           previous = root;
-           return isBST(root.right,previous);
+        if (!isBST(root.left, previous)) {
+            return false;
+        }
+        if (previous != null && root.data < previous.data) {
+            return false;
+        }
+        previous = root;
+        return isBST(root.right, previous);
     }
 
-//    Initialise two variables start and end with 0 and arr.length -1.
+    public boolean isBSTP(BSTNode root, BSTNode previous) {
+        if (root == null) {
+            return true;
+        }
+        if (!isBSTP(root.left, previous)) {
+            return false;
+        }
+        if (previous != null && previous.data > root.data) {
+            return false;
+        }
+        previous = root;
+        return isBSTP(root.right, previous);
+    }
+
+    //    Initialise two variables start and end with 0 and arr.length -1.
 //    Find middle element of array using start and end.
 //    Make middle element root element of tree.
 //    Recursively traverse left array, find middle and make it root node of left subtree
 //    Recursively traverse right array, find middle and make it root node of right subtree.
-    public BSTNode createBSTFromSortedArray(int[] arr, int start,int end){
-        if(start>end){
+    public BSTNode createBSTFromSortedArray(int[] arr, int start, int end) {
+        if (start > end) {
             return null;
         }
-        int mid= (start+end)/2;
+        int mid = (start + end) / 2;
         BSTNode bstNode = new BSTNode(arr[mid]);
-        bstNode.left = createBSTFromSortedArray(arr,start,mid-1);
-        bstNode.right = createBSTFromSortedArray(arr,mid+1,end);
+        bstNode.left = createBSTFromSortedArray(arr, start, mid - 1);
+        bstNode.right = createBSTFromSortedArray(arr, mid + 1, end);
         return bstNode;
     }
 
@@ -153,19 +179,18 @@ public class BinarySearchTree {
 //    }
 
     public BSTNode lowestCommonAncestorForBinarySearchTree(BSTNode root, BSTNode a, BSTNode b) {
-        if(root==null)
-            return null;;
-        if(root.data>a.data && root.data > b.data)
-        {
-            return lowestCommonAncestorForBinarySearchTree(root.left,a,b);
-        }
-        else if(root.data < a.data && root.data < b.data)
-        {
-            return lowestCommonAncestorForBinarySearchTree(root.right,a,b);
+        if (root == null)
+            return null;
+        ;
+        if (root.data > a.data && root.data > b.data) {
+            return lowestCommonAncestorForBinarySearchTree(root.left, a, b);
+        } else if (root.data < a.data && root.data < b.data) {
+            return lowestCommonAncestorForBinarySearchTree(root.right, a, b);
         }
         // if you reach at this place, then it is LCA for given two nodes because a and b are on either side of root.
         return root;
     }
+
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
         BSTNode rootNode = new BSTNode(40);
@@ -178,14 +203,14 @@ public class BinarySearchTree {
         bst.insert(rootNode, 70);
         bst.inOrder(rootNode);
         System.out.println();
-        System.out.println("search node 10:"+bst.search(rootNode,10));
-        System.out.println("Minimum element in BST:"+bst.minimumElement(rootNode).data);
-        System.out.println("Maximum element in BST:"+bst.maximumElement(rootNode).data);
-        System.out.println("Is banary tree is BST:"+bst.isBST(rootNode,null));
+        System.out.println("search node 10:" + bst.search(rootNode, 10));
+        System.out.println("Minimum element in BST:" + bst.minimumElement(rootNode).data);
+        System.out.println("Maximum element in BST:" + bst.maximumElement(rootNode).data);
+        System.out.println("Is banary tree is BST:" + bst.isBST(rootNode, null));
 
         System.out.println("BST from sorted Array");
-        int arr[]={10,20,30,40,50,60,70};
-        BSTNode rootNew= bst.createBSTFromSortedArray(arr,0,arr.length-1);
+        int arr[] = {10, 20, 30, 40, 50, 60, 70};
+        BSTNode rootNew = bst.createBSTFromSortedArray(arr, 0, arr.length - 1);
         bst.inOrder(rootNew);
         System.out.println();
         System.out.println("LCA of 50 and 70:" + bst.lowestCommonAncestorForBinarySearchTree(rootNode, new BSTNode(70), new BSTNode(50)).data);

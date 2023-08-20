@@ -13,7 +13,7 @@ public class LRUCacheImpl {
     public LRUCacheImpl(int capacity) {
         this.capacity = capacity;
         queue = new LinkedList<>();
-        map= new HashMap<>();
+        map = new HashMap<>();
     }
 
     public Integer get(Integer key){

@@ -39,6 +39,7 @@ public class MatrixTranspose {
         }
         return result;
     }
+
     /**
      * Method to calculate multiplication or product of two matrices.
      *
@@ -60,8 +61,8 @@ public class MatrixTranspose {
         int columnsofSecondMatrix = matrix2[0].length;
         int[][] product = new int[rowsOfFirstMatrix][columnsofSecondMatrix];
 
-        for (int i = 0; i <rowsOfFirstMatrix; i++) {
-            for (int j = 0; j <columnsofSecondMatrix; j++) {
+        for (int i = 0; i < rowsOfFirstMatrix; i++) {
+            for (int j = 0; j < columnsofSecondMatrix; j++) {
 
                 int sum = 0;
                 for (int k = 0; k < rowsOfSecondMatrix; k++) {
@@ -74,7 +75,6 @@ public class MatrixTranspose {
 
         return product;
     }
-
 
 
     public static void main(String args[]) {

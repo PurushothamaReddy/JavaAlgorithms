@@ -84,8 +84,8 @@ public class BinaryTree {
 
     public void postOrder(TreeNode root) {
         if (root != null) {
-            inOrder(root.left);
-            inOrder(root.right);
+            postOrder(root.left);
+            postOrder(root.right);
             System.out.print(root.data + " ");
         }
 
@@ -287,7 +287,7 @@ public class BinaryTree {
         }
         TreeNode mirror = new TreeNode(root.data);
         mirror.left = mirrorOfBT(root.right);
-        mirror.right=mirrorOfBT(root.left);
+        mirror.right= mirrorOfBT(root.left);
         return mirror;
     }
 
