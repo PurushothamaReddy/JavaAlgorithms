@@ -32,4 +32,19 @@ public class ArraySameElements {
         }
         return true;
     }
+
+    public static boolean isArrayEquals(final Object[] a1, final Object[] a2) {
+        Set<Object> s1 = new HashSet<>(Arrays.asList(a1));
+        Set<Object> s2 = new HashSet<>(Arrays.asList(a2));
+
+        if (s1.size() != s2.size()) {
+            return false;
+        }
+        for (Object o : s1) {
+            if (!s2.contains(o)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -13,7 +13,7 @@ public class FilterWords {
         char[] chars = letters.toCharArray();
         int k = 0;
         for (int i = 0; i < words.length; i++) {
-boolean filter=true;
+            boolean filter = true;
             for (int j = 0; j < chars.length; j++) {
 
                 if (words[i].indexOf(chars[j]) != -1) {
@@ -22,7 +22,7 @@ boolean filter=true;
                     break;
                 }
             }
-            if(!filter){
+            if (!filter) {
                 System.out.println(words[i]);
             }
 

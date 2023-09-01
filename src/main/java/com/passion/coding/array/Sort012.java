@@ -39,6 +39,7 @@ public class Sort012 {
                 a[h]=temp;
                 h--;
 
+
             }
         }
     }
