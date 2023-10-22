@@ -79,7 +79,8 @@ public class BinaryTree {
             if (current.left != null) {
                 nodes.push(current.left);
             }
-        } }
+        }
+    }
 
 
     public void postOrder(TreeNode root) {
@@ -101,6 +102,25 @@ public class BinaryTree {
                 queue.add(temp.left);
             }
             if (temp.right != null) {
+                queue.add(temp.right);
+            }
+        }
+    }
+
+    public void levelOrderTraversalP(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode temp = queue.poll();
+            System.out.print(temp.data+" ");
+
+            if(temp.left!= null) {
+                queue.add(temp.left);
+            }
+            if(temp.right != null) {
                 queue.add(temp.right);
             }
         }
@@ -140,8 +160,7 @@ public class BinaryTree {
                 if (node.right != null) {
                     nextLevel.push(node.right);
                 }
-            }
-            else {
+            } else {
                 if (node.right != null) {
                     nextLevel.push(node.right);
                 }
@@ -280,49 +299,50 @@ public class BinaryTree {
         return isSubTreeExist(main.left, sub) || isSubTreeExist(main.right, sub);
     }
 
-    public TreeNode mirrorOfBT(TreeNode root){
+    public TreeNode mirrorOfBT(TreeNode root) {
 
-        if( root == null){
+        if (root == null) {
             return null;
         }
         TreeNode mirror = new TreeNode(root.data);
         mirror.left = mirrorOfBT(root.right);
-        mirror.right= mirrorOfBT(root.left);
+        mirror.right = mirrorOfBT(root.left);
         return mirror;
     }
 
     public int sum(TreeNode root) {
-        if( root == null){
+        if (root == null) {
             return 0;
         }
-        return sum(root.left)+ root.data+sum(root.right);
+        return sum(root.left) + root.data + sum(root.right);
     }
 
     //1.Sum of left & right node is equal to root node.
     //2.this rule applicable for left subtree and right subtree.
     public boolean isSumTree(TreeNode root) {
-        if(root == null || root.left == null || root.right == null)
+        if (root == null || root.left == null || root.right == null)
             return true;
-        int ls,rs;
-        ls=sum(root.left);
-        rs=sum(root.right);
-        return (ls+rs)== root.data && isSumTree(root.left)&& isSumTree(root.right);
+        int ls, rs;
+        ls = sum(root.left);
+        rs = sum(root.right);
+        return (ls + rs) == root.data && isSumTree(root.left) && isSumTree(root.right);
     }
 
-    public boolean isBalanced(TreeNode root){
-        if(root == null)
+    public boolean isBalanced(TreeNode root) {
+        if (root == null)
             return true;
-        int lh,rh;
-        lh=height(root.left);
-        rh=height(root.right);
-        return Math.abs(lh-rh)<=1 && isBalanced(root.left) && isBalanced(root.right);
+        int lh, rh;
+        lh = height(root.left);
+        rh = height(root.right);
+        return Math.abs(lh - rh) <= 1 && isBalanced(root.left) && isBalanced(root.right);
     }
-//height or depth ofa binary tree
-    public int height(TreeNode root){
-        if(root ==null){
+
+    //height or depth ofa binary tree
+    public int height(TreeNode root) {
+        if (root == null) {
             return 0;
         }
-        return 1+Math.max(height(root.left),height(root.right));
+        return 1 + Math.max(height(root.left), height(root.right));
     }
 
     public static void main(String[] args) {
@@ -363,10 +383,10 @@ public class BinaryTree {
         bt.inOrder(rootNode);
         System.out.println();
         System.out.println("Mirror Image inorder:");
-        bt.inOrder(bt.mirrorOfBT(rootNode)) ;
+        bt.inOrder(bt.mirrorOfBT(rootNode));
         System.out.println();
-        System.out.println("IS bt is sum tree:"+bt.isSumTree(rootNode));
-        System.out.println("IS bt is balanced tree:"+bt.isBalanced(rootNode));
+        System.out.println("IS bt is sum tree:" + bt.isSumTree(rootNode));
+        System.out.println("IS bt is balanced tree:" + bt.isBalanced(rootNode));
 
     }
 }

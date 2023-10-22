@@ -12,6 +12,7 @@ public class AnagramOfStrings {
         String str3 = "IndiaVsEngland";
         String str4 = "EnglandIndiaVs";
         System.out.println("Rotation : " + checkRotation(str3, str4));
+        firstNonRepeatingChar("aabcbda");
         System.out.println(10/0);
 
     }
@@ -27,6 +28,18 @@ public class AnagramOfStrings {
             return true;
         }
         return false;
+    }
+
+    private static void firstNonRepeatingChar(final String str) {
+        if(str== null || str.isEmpty()){
+            return;
+        }
+        for(char ch : str.toCharArray()){
+            if(str.indexOf(ch) == str.lastIndexOf(ch)){
+                System.out.println(ch);
+                return;
+            }
+        }
     }
 
     private static boolean isAnagramUsingArraysSort(String str1, String str2) {
@@ -45,6 +58,30 @@ public class AnagramOfStrings {
 //        strf1.equalsIgnoreCase(strf2);
         //convert this to string using String.valaue
         return Arrays.equals(ch1, ch2);
+    }
+
+    public static String SortString(String str)
+    {
+        char c[] = str.toCharArray();
+        Arrays.sort(c);
+        return new String(c);
+    }
+    public static boolean checkAnagrams(String str1, String str2)
+    {
+        // Case 1: when both of the strings have different lengths
+        if (str1.length() != str2.length())
+            return false;
+
+        str1 = SortString(str1);
+        str2 = SortString(str2);
+
+        // Case 2: check if every character of str1 and str2 matches with each other
+        for (int i = 0; i < str1.length(); i++)
+        {
+            if (str1.charAt(i) != str2.charAt(i))
+                return false;
+        }
+        return true;
     }
 
 }

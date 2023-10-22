@@ -64,6 +64,26 @@ public class GraphP {
         }
     }
 
+
+    public void bfsP(Node root) {
+        if(root== null) {
+            return;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        root.visited= true;
+        while (!queue.isEmpty()) {
+            Node temp= queue.poll();
+            System.out.print(temp.data+" ");
+            for(Node adjacentNode: temp.getAdjacentNodes()){
+                if(adjacentNode != null && !adjacentNode.visited) {
+                    queue.add(adjacentNode);
+                    adjacentNode.visited=true;
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         GraphP.Node node40 = new GraphP.Node(40);
         GraphP.Node node10 = new GraphP.Node(10);

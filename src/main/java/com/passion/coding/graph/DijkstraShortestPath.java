@@ -58,11 +58,13 @@ public class DijkstraShortestPath {
 
             for(Edge edge: actualVertex.getAdjacenciesList()) {
                 Vertex v= edge.getTargetVertex();
-                double newDistance = actualVertex.getDistance()+ edge.getWeight();
-                if(newDistance < v.getDistance()) {
-                  v.setDistance(newDistance);
-                  v.setPredecessor(actualVertex);
-                  queue.add(v);
+                if(!v.isVisited()) {
+                    double newDistance = actualVertex.getDistance() + edge.getWeight();
+                    if (newDistance < v.getDistance()) {
+                        v.setDistance(newDistance);
+                        v.setPredecessor(actualVertex);
+                        queue.add(v);
+                    }
                 }
 
             }

@@ -26,8 +26,8 @@ public class ArrayShuffle {
         for(int i=0;i< a.length;i++){
             int randomIndex= random.nextInt(a.length);
             int temp = a[randomIndex];
+            a[randomIndex]= a[i];
             a[i] = temp;
-            temp= a[i];
         }
         System.out.println(Arrays.toString(a));
     }
