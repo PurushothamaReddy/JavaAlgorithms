@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class EquilibriumIndexOfArray {
     public static void main(String[] args) {
         int[] arr = {1, 4, 5, 3, 2};
-        System.out.println(equalibriumIndexP(arr));
+        System.out.println(equalibriumIndex(arr));
     }
 
     private static int equalibriumIndex(int[] arr) {
@@ -25,22 +25,33 @@ public class EquilibriumIndexOfArray {
         return -1;
     }
 
+    private static int equilibrium(int arr[], int n)
+    {
+        int i, j;
+        int leftsum, rightsum;
 
-    private static int equalibriumIndexP(int[] arr) {
-        long sum = 0, left_sum = 0;
+    /* Check for indexes one by one until
+    an equilibrium index is found */
+        for (i = 0; i < n; ++i) {
 
-        sum = Arrays.stream(arr).sum();
-        System.out.println(sum);
+            /* get left sum */
+            leftsum = 0;
+            for (j = 0; j < i; j++)
+                leftsum += arr[j];
 
-        for(int i=0;i< arr.length;i++) {
+            /* get right sum */
+            rightsum = 0;
+            for (j = i + 1; j < n; j++)
+                rightsum += arr[j];
 
-            sum-=arr[i];
-            if (sum == left_sum){
-                System.out.println("Index equilibrium:" + i);
+        /* if leftsum and rightsum
+        are same, then we are done */
+            if (leftsum == rightsum)
                 return i;
-            }
-            left_sum +=arr[i];
         }
-        return 0;
+
+    /* return -1 if no equilibrium
+    index is found */
+        return -1;
     }
 }

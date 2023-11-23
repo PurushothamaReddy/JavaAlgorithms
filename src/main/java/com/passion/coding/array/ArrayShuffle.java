@@ -21,15 +21,26 @@ public class ArrayShuffle {
         printShuffledArray(a1);
     }
 
-    public static void printShuffledArray(int[] a){
+    public static void printShuffledArray(int[] a) {
         Random random = new Random();
-        for(int i=0;i< a.length;i++){
-            int randomIndex= random.nextInt(a.length);
+        for (int i = 0; i < a.length; i++) {
+            int randomIndex = random.nextInt(a.length);
             int temp = a[randomIndex];
-            a[randomIndex]= a[i];
+            a[randomIndex] = a[i];
             a[i] = temp;
         }
         System.out.println(Arrays.toString(a));
     }
 
+
+    public static void printShuffledA(int[] a) {
+        Random random = new Random();
+        for (int i = 0; i < a.length; i++) {
+            int rIndex = random.nextInt(a.length);
+            int temp = a[rIndex];
+            a[rIndex] = a[i];
+            a[i] = temp;
+        }
+        System.out.println(Arrays.toString(a));
+    }
 }

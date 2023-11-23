@@ -38,8 +38,6 @@ public class Sort012 {
                 a[m]=a[h];
                 a[h]=temp;
                 h--;
-
-
             }
         }
     }

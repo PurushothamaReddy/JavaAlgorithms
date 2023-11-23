@@ -6,7 +6,11 @@ public class PrintDuplicateCharacters {
         if (str == null || str.isEmpty()) {
             return;
         }
-
+        for(char ch : str.toCharArray()){
+            if(str.indexOf(ch) != str.lastIndexOf(ch)){
+                System.out.println(ch);
+            }
+        }
     }
 
     public static void main(String[] args) {

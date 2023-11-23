@@ -21,4 +21,23 @@ public class StockMaxProfit {
         }
         System.out.println("Max Profit:"+maxProfit);
     }
+
+
+    private static int maxProfit(int[] a){
+        int lowestPriceTillToday=a[0];
+        int profit=Integer.MIN_VALUE;
+        int maxProfit = Integer.MIN_VALUE;
+        for(int i=1;i<a.length;i++){
+
+            if(a[i] > lowestPriceTillToday){
+                profit = a[i]-lowestPriceTillToday;
+                if(profit>maxProfit){
+                    maxProfit= profit;
+                }
+                } else {
+                lowestPriceTillToday= a[i];
+            }
+        }
+        return maxProfit;
+    }
 }

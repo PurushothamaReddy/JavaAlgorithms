@@ -116,7 +116,7 @@ public class BinarySearchTree {
         previous = root;
         return isBSTP(root.right, previous);
     }
-
+//https://medium.com/@rupeshmalkar/convert-a-binary-search-tree-to-a-balanced-binary-tree-2c9a59e766d2
     //    Initialise two variables start and end with 0 and arr.length -1.
 //    Find middle element of array using start and end.
 //    Make middle element root element of tree.

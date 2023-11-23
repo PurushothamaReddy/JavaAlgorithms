@@ -91,7 +91,7 @@ public class SingleLinkedList {
             }
         }
     }
-
+//https://kodebinary.com/find-decimal-equivalent-of-a-binary-linked-list/
     public Node reverse(Node headNode) {
 
         if (headNode.next == null) {
