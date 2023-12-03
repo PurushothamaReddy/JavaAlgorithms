@@ -30,6 +30,48 @@ public class BinarySearchTree {
         return root;
     }
 
+    // Iterative function to insert a key into a BST
+    public static BSTNode insertIterative(BSTNode root, int key)
+    {
+        // start with the root node
+        BSTNode curr = root;
+
+        // pointer to store the parent of the current node
+        BSTNode parent = null;
+
+        // if the tree is empty, create a new node and set it as root
+        if (root == null) {
+            return new BSTNode(key);
+        }
+
+        // traverse the tree and find the parent node of the given key
+        while (curr != null)
+        {
+            // update the parent to the current node
+            parent = curr;
+
+            // if the given key is less than the current node,
+            // go to the left subtree; otherwise, go to the right subtree.
+            if (key < curr.data) {
+                curr = curr.left;
+            }
+            else {
+                curr = curr.right;
+            }
+        }
+
+        // construct a node and assign it to the appropriate parent pointer
+        if (key < parent.data) {
+            parent.left = new BSTNode(key);
+        }
+        else {
+            parent.right = new BSTNode(key);
+        }
+
+        return root;
+    }
+
+
     public boolean search(BSTNode root, int data) {
         if (root == null) {
             return false;
