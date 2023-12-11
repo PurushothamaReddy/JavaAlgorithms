@@ -5,7 +5,7 @@ public class SingleLinkedList {
 
     Node head;
 
-    class Node {
+    public class Node {
         int data;
         Node next;
 
@@ -20,6 +20,14 @@ public class SingleLinkedList {
 
         public void setNext(Node next) {
             this.next = next;
+        }
+
+        public int getData() {
+            return data;
+        }
+
+        public void setData(int data) {
+            this.data = data;
         }
     }
 
@@ -107,6 +115,33 @@ public class SingleLinkedList {
             }
         }
         return headNode;
+    }
+
+    public int getCount(Node headNode) {
+
+        int n = 0;
+        Node temp= headNode;
+        while (temp != null) {
+            n++;
+            temp = temp.next;
+        }
+        return n;
+    }
+
+    public void bubbleSortSingleLinkedList(Node headNode) {
+        int n = getCount(headNode);
+        for (int i = 0; i < n - 1; i++) {
+            Node temp1=headNode;
+            for (int j = 0; j < n - i - 1; j++) {
+                Node temp2 =temp1.next;
+                if(temp1.data> temp2.data){
+                    int t= temp1.data;
+                    temp1.data = temp2.data;
+                    temp2.data= t;
+                }
+                temp1=temp2;
+            }
+        }
     }
 
 
@@ -232,9 +267,12 @@ public class SingleLinkedList {
         SingleLinkedList list = new SingleLinkedList();
         list.insert(10);
         list.insert(20);
+        list.insert(50);
         list.insert(30);
         list.insert(40);
-        list.insert(50);
+        list.display();
+        list.bubbleSortSingleLinkedList(list.head);
+        System.out.println("After Sort:");
         list.display();
         list.display( list.reverseLinkedListInPairs(list.head));
         list.delete(20);

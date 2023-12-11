@@ -1,8 +1,11 @@
 package com.passion.coding.string;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class StringReversal {
     public static void main(String[] args) {
-        String s="HelloWorld";
+        String s = "HelloWorld";
         System.out.println(reverse(s));
         String str1 = "abcdABCDabcdABCD";
 
@@ -14,41 +17,52 @@ public class StringReversal {
         System.out.println("s1 == s2 is:" + (s1 == s2));
 
     }
-    private static String reverse(String str){
-        if(str.length() <=1){
+
+    private static String reverse(String str) {
+        if (str.length() <= 1) {
             return str;
         }
-        return reverse(str.substring(1))+str.charAt(0);
+        return reverse(str.substring(1)) + str.charAt(0);
     }
 
-    public static String reverseWithoutRecursion(String source){
-        if(source == null || source.isEmpty()){
+    public static String reverseWithoutRecursion(String source) {
+        if (source == null || source.isEmpty()) {
             return source;
         }
         String reverse = "";
-        for(int i = source.length() -1; i>=0; i--){
+        for (int i = source.length() - 1; i >= 0; i--) {
             reverse = reverse + source.charAt(i);
         }
 
         return reverse;
     }
 
-    public static boolean isPalindrome(String str)
-    {
-        return isPalindrome(str,0,str.length()-1);
+    private static String reverseWords(String str) {
+        StringBuilder sb = new StringBuilder();
+        List<String> words = Arrays.asList(str.split(" "));
+        for (int i = words.size() - 1; i > 0; i--) {
+            sb.append(words.get(i) + " ");
+        }
+
+        return sb.toString().trim();
+    }
+
+    public static boolean isPalindrome(String str) {
+        return isPalindrome(str, 0, str.length() - 1);
 
     }
-    public static boolean isPalindrome(String str,int low, int high)
-    {  if(high <= low)
-        return true;
-    else if (str.charAt(low)!= str.charAt(high))
-        return false;
-    else
-        return isPalindrome(str,low+1,high-1);
 
+    public static boolean isPalindrome(String str, int low, int high) {
+        if (high <= low)
+            return true;
+        else if (str.charAt(low) != str.charAt(high))
+            return false;
+        else
+            return isPalindrome(str, low + 1, high - 1);
 
 
     }
+
     /*
      * Java method to check if a number is palindrome or not
      */
@@ -69,20 +83,30 @@ public class StringReversal {
         return false;
     }
 
-    public static int sumOfDigits(int number){
-        if(number/10 == 0) return number;
+    public static int sumOfDigits(int number) {
+        if (number / 10 == 0) return number;
 
-        return number%10 + sumOfDigits(number/10);
+        return number % 10 + sumOfDigits(number / 10);
     }
 
-    public static int sumOfDigitsIterative(int number){
-        int result  = 0;
-        while(number != 0){
-            result = result + number%10;
-            number = number/10;
+    public static int sumOfDigitsIterative(int number) {
+        int result = 0;
+        while (number != 0) {
+            result = result + number % 10;
+            number = number / 10;
         }
 
         return result;
     }
+
+    public static int factorial(int number) {
+        int result = 1;
+        while (number != 0) {
+            result = number * number - 1;
+            number--;
+        }
+        return result;
+    }
+
 }
 

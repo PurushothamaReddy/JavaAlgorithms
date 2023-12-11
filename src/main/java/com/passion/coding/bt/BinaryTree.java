@@ -1,6 +1,8 @@
 package com.passion.coding.bt;
 
 
+import com.passion.coding.linkedlist.SingleLinkedList;
+
 import java.util.*;
 
 public class BinaryTree {
@@ -308,6 +310,27 @@ public class BinaryTree {
         mirror.left = mirrorOfBT(root.right);
         mirror.right = mirrorOfBT(root.left);
         return mirror;
+    }
+
+    //Program to convert a linked list to a binary tree
+
+//         1) Find the node in the middle of the list and make it the root of the tree.
+//        2) Do the same recursively for the left half and the right half.
+//            a) Get the middle of the left half and make it left child of the root
+//    created in step 1.
+//    b) Get the middle of right half and make it the right child of the
+//    root created in step 1.
+// else store linked list in array do the same
+    public  TreeNode convertLinkedListToBT(SingleLinkedList.Node head,SingleLinkedList list){
+
+        SingleLinkedList.Node middle = list.findMiddleNode();
+        TreeNode treeNode= new TreeNode(middle.getData());
+        SingleLinkedList.Node secondHalf= middle.getNext();
+        middle=null;
+
+        treeNode.left = convertLinkedListToBT(head,list);
+        treeNode.right = convertLinkedListToBT(secondHalf,list);
+        return treeNode;
     }
 
     public int sum(TreeNode root) {
