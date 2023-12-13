@@ -1,6 +1,8 @@
 package com.passion.coding.linkedlist;
 
 
+import java.util.Stack;
+
 public class SingleLinkedList {
 
     Node head;
@@ -100,6 +102,22 @@ public class SingleLinkedList {
         }
     }
 //https://kodebinary.com/find-decimal-equivalent-of-a-binary-linked-list/
+
+    public int decimalEquivalentOfBinarySingleLL(Node headNode){
+        Node temp=headNode;
+        Stack<Integer> stack= new Stack<>();
+        while (temp!=null){
+            stack.push(temp.data);
+            temp= temp.next;
+        }
+        int result=0;
+        int index=0;
+        while (!stack.isEmpty()) {
+            result+=stack.pop()*Math.pow(2,index++);
+        }
+        return result;
+    }
+
     public Node reverse(Node headNode) {
 
         if (headNode.next == null) {

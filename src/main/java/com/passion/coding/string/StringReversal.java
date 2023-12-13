@@ -108,5 +108,9 @@ public class StringReversal {
         return result;
     }
 
+    public static boolean stringContainsVowels(String input) {
+        return input.toLowerCase().matches(".*[aeiou].*");
+    }
+
 }
 
