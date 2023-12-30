@@ -30,5 +30,26 @@ public class DuplicateElementsOfList {
         System.out.println(Math.min(Double.MIN_VALUE, 0.0d));
         System.out.println(1.0 / 0.0);
 
+
+        Map<String,String> map = new HashMap<String,String>();
+        map.put("Effective Java", "Kathy Sierra");
+        map.put("Spring in Action", "Craig Walls");
+        map.put("Hibernate in Action", "Gavin King");
+        map.put("Pro Angular", "Freeman");
+        map.put("Pro Spring Boot", "Felipe Gutierrez");
+        System.out.println(map);
+        System.out.println("==============");
+//Only modify if key already exists in the map
+        map.computeIfPresent("Effective Java",(key,value)->"Effective Java 8");
+
+        //Only modify if key doesn't exist in the map
+        map.computeIfAbsent("Core Java", (value) -> value+" Kathy Sierra");
+        map.putIfAbsent("Core Java 21", " Kathy Sierra");
+
+//        System.out.println(map);
+        map.entrySet().stream().forEach(System.out::println);
+        System.out.println("==============");
+        map.entrySet().iterator()
+                .forEachRemaining(System.out::println);
     }
 }
