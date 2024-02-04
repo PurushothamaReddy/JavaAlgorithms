@@ -25,7 +25,7 @@ public class DuplicateElementsOfList {
         System.out.println("count each element/word from the String ArrayList in Java8");
         System.out.println(list.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting())));
         System.out.println("find only duplicate elements with its count from the String ArrayList in Java8");
-        System.out.println(list.stream().filter(x-> Collections.frequency(list,x)>1).collect(Collectors.groupingBy(Function.identity(),Collectors.counting())));
+        System.out.println(list.stream().filter(x-> Collections.frequency(list,x)>1).collect(Collectors.groupingBy(x->x,Collectors.counting())));
 
         System.out.println(Math.min(Double.MIN_VALUE, 0.0d));
         System.out.println(1.0 / 0.0);
@@ -51,5 +51,10 @@ public class DuplicateElementsOfList {
         System.out.println("==============");
         map.entrySet().iterator()
                 .forEachRemaining(System.out::println);
+//
+//        List<Integer> list1 = new ArrayList<>();
+//        System.out.println(list1.len);
+//        list1.add(100);
+//        System.out.println(list1.size());
     }
 }

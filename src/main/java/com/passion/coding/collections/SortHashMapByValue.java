@@ -1,12 +1,8 @@
 package com.passion.coding.collections;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class SortHashMapByValue {
@@ -58,7 +54,7 @@ public class SortHashMapByValue {
 		Map<String, Integer> sortByValue = new LinkedHashMap<>();
 
 		List<Entry<String,Integer>> entryList = new ArrayList<>(scores.entrySet());
-		entryList.sort((e1,e2)-> e1.getValue().compareTo(e2.getValue()));
+		Collections.sort(entryList,(e1, e2)-> e1.getValue().compareTo(e2.getValue()));
 	//	sortByValue =entryList.stream().collect(Collectors.toMap(e-> e.getKey(),e->e.getValue()));
 		for (Entry<String, Integer> e : entryList) {
 			sortByValue.put(e.getKey(), e.getValue());

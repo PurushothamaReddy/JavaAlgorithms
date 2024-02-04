@@ -19,6 +19,8 @@ public class PermuteString {
         generatePermutation(str, 0, len);
         System.out.println("PermP");
         permutation("",str);
+        System.out.println("=============***");
+        permutationOfStr("",str);
     }
 
     //Function for generating different permutations of the string  
@@ -65,5 +67,32 @@ public class PermuteString {
         }
 
     }
+
+
+    private static void permutationOfStr(String perm,String word){
+        if(word.isEmpty()){
+            System.out.println(perm);
+        } else {
+            for(int i=0;i<word.length();i++) {
+                permutationOfStr(perm+word.charAt(i),word.substring(0,i)+word.substring(i+1));
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

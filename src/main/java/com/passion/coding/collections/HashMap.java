@@ -58,6 +58,10 @@ public class HashMap<K, V> {
                 }
                 existing = existing.next;
             }
+            if(existing!=null && existing.key.equals(key)){
+                existing.value=value;
+                return;
+            }
             existing.next = entry;
             size++;
         }

@@ -1,5 +1,7 @@
 package com.passion.coding.miscellaneous;
 
+import com.sun.deploy.util.StringUtils;
+
 import java.util.Stack;
 
 public class CheckBalancedParentesisMain {
@@ -57,4 +59,27 @@ public class CheckBalancedParentesisMain {
         }
         return stack.isEmpty()? "Balanced":"Not balanced";
     }
+
+    public static String isBalanced(final String str) {
+        if(str == null || str.isEmpty()){
+            return "Balanced";
+        }
+        Stack<Character> stack = new Stack<>();
+        for(int i=0;i<str.length();i++){
+            char current= str.charAt(i);
+            if(current =='{' || current== '[' || current=='('){
+                stack.push(current);
+            } else if (current =='}' || current== ']' || current==')') {
+                if(stack.isEmpty()){
+                    return "Not Balanced";
+                }
+                char prev = stack.peek();
+                if((prev == '{' && current == '}') || (prev == '(' && current == ')') || (prev == '[' && current == ']')){
+                    stack.pop();
+                }
+            }
+        }
+        return stack.isEmpty()? "Balanced":"Not Balanced";
+    }
+
 }
