@@ -13,7 +13,7 @@ public class ArraySameElements {
         Arrays.sort(a2);
         System.out.println(Arrays.equals(a1, a2));
         System.out.println(isArraysEqual(a1, a2));
-
+        Thread.currentThread().dumpStack();
     }
 
 

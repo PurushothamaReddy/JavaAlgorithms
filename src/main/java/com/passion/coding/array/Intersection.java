@@ -41,4 +41,20 @@ public class Intersection {
         System.out.println("            ");
     }
 
+    private static void inter(int[] a, int[] b) {
+        int[] c = new int[a.length + b.length];
+        int k = 0;
+        for (int i = 0; i < a.length; i++) {
+
+            for (int j = 0; j < b.length; j++) {
+                if (a[i] == b[j]) {
+                    c[k++] = a[i];
+                }
+            }
+        }
+
+        for (int i = 0; i < k; i++) {
+            System.out.println(c[k]);
+        }
+    }
 }

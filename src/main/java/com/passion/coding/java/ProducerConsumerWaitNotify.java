@@ -1,11 +1,13 @@
 package com.passion.coding.java;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
-public class ProducerConsumerWaitNotify {
+public class ProducerConsumerWaitNotify implements Serializable {
 
+    private static final long serialVersionUID = -7139050220602792952L;
     public static void main(String[] args) {
         Queue<Integer> queue = new LinkedList<>();
         Thread producer = new Thread(new ProducerThread(queue, 10));

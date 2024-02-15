@@ -21,4 +21,18 @@ public class SortStackUsingAnotherStack {
         }
         System.out.println("After Sorting:" + s2);
     }
+
+
+    private static void sortUsingAnotherStack(Stack<Integer> s1){
+        Stack<Integer> s2 = new Stack<>();
+
+        while (!s1.isEmpty()) {
+            int x= s1.pop();
+            while (!s2.isEmpty() && s2.peek()>x){
+                s1.push(s2.pop());
+            }
+            s2.push(x);
+        }
+        System.out.println(s2);
+    }
 }
