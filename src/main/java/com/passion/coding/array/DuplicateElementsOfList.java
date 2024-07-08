@@ -1,6 +1,7 @@
 package com.passion.coding.array;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,8 @@ public class DuplicateElementsOfList {
         list.stream().filter(n-> !set.add(n)).forEach(System.out::println);
         System.out.println("Duplicate elements using complete stream");
         list.stream().filter(x-> Collections.frequency(list,x)>1).forEach(System.out::println);
+        System.out.println("Non-Duplicate elements using complete stream");
+        list.stream().filter(x-> Collections.frequency(list,x)==1).forEach(System.out::println);
         System.out.println("Unique elements");
         list.stream().distinct().forEach(System.out::println);
 
@@ -51,6 +54,17 @@ public class DuplicateElementsOfList {
         System.out.println("==============");
         map.entrySet().iterator()
                 .forEachRemaining(System.out::println);
+
+        CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
+            // Some long-running operation
+            return "Result 1";
+        });
+        future1.thenRun(()->{
+            System.out.println("Future execution completed");
+        });
+        future1.thenAccept((x)->{
+            System.out.println("future result:"+x);
+        });
 //
 //        List<Integer> list1 = new ArrayList<>();
 //        System.out.println(list1.len);

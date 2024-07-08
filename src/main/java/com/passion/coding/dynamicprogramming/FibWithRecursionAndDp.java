@@ -1,5 +1,7 @@
 package com.passion.coding.dynamicprogramming;
 
+import java.math.BigInteger;
+
 public class FibWithRecursionAndDp {
 
     public int fibWithDp(int n){
@@ -8,7 +10,18 @@ public class FibWithRecursionAndDp {
         f[1]=1;
         for (int i=2;i<=n;i++){
             f[i]=f[i-1]+f[i-2];
-            System.out.println(f[i]);
+            //System.out.println(f[i]);
+        }
+        return f[n];
+    }
+
+    public BigInteger fibWithDpBigInteger(int n){
+        BigInteger[] f= new BigInteger[n+1];
+        f[0]=new BigInteger(0+"");
+        f[1]=new BigInteger(1+"");
+        for (int i=2;i<=n;i++){
+            f[i]=f[i-1].add(f[i-2]);
+            //System.out.println(f[i]);
         }
         return f[n];
     }
@@ -26,13 +39,17 @@ public class FibWithRecursionAndDp {
 
     public static void main(String[] args) {
         FibWithRecursionAndDp fib = new FibWithRecursionAndDp();
-        System.out.println(fib.fibWithRecursion(9));
-        System.out.println(fib.fibWithDp(9));
-        String s = "  abc  def\t";
+        //test fibanocci for with n value 10,46,300 and time taken should be with in 1 sec
+        long start= System.currentTimeMillis();
+        System.out.println(fib.fibWithDpBigInteger(300));
+        long end= System.currentTimeMillis();
+        System.out.println("time:"+(end-start));
+//        long start1= System.currentTimeMillis();
+//        System.out.println(fib.fibWithRecursion(300));
+//        long end1= System.currentTimeMillis();
+//        System.out.println("time1:"+(end1-start1));
 
-        s = s.trim();
 
-        System.out.println(s+"after");
     }
 
 }
